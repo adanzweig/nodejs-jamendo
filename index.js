@@ -35,7 +35,7 @@ async function getMusicUrl(key, type){
         const request = await getJSON(`https://api.jamendo.com/v3.0/tracks/?client_id=${key}&format=json&limit=1&vocalinstrumental=instrumental&search=${type}`);
         // If no download URL is present, recursively attempt to get another URL
         if(!request.results[0].audiodownload){
-            return await getMusicUrl(key,type);
+            return null
         }
         return request.results[0].audiodownload;
 
